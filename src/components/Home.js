@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./CSS/Home.css";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import { UserAuth } from "../authContext";
+import { Navigate } from "react-router-dom"; 
 
 function Home() {
+  const { user } = UserAuth();
+  console.log(user)
+
+
   return (
     <div className="home">
-      <Header />
       <div className="home__contents">
-        <Link to="/interview">Interview</Link>
-        <Link to="/hrquestions">HR Questions</Link>
-        <Link to="/summary">Summary</Link>
+        {user?.email?(<Link to="/interview">Interview</Link>):(<Link to="/signin">Interview</Link>)}
+        {user?(<Link to="/hrquestions">HR Questions</Link>):(<Link to="/signin">HR Questions</Link>)}
+        {user?(<Link to="/summary">Summary</Link>):(<Link to="/signin">Summary</Link>)}
       </div>
     </div>
   );

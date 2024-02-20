@@ -1,18 +1,16 @@
 import React from "react";
-import "./CSS/Header.css";
-
 import { Link } from "react-router-dom";
+import './CSS/Header.css'
 
 function Header() {
   return (
     <div className="header">
-      <div className="header__left">
-        <Link to="/">Logo</Link>
+      <p>LOGO</p>
+      <div className="subhead">
+      <Link className="tabs" to="/">Home</Link>
+      <Link className="tabs" to="/signup">Sign Up</Link>
+      <Link className="tabs" to="/signin">Sign In</Link>
       </div>
-      {/* <div className="header__right">
-        <Link to="/interview">Interview</Link>
-        <Link to="/hrquestions">HR Questions</Link>
-      </div> */}
     </div>
   );
 }

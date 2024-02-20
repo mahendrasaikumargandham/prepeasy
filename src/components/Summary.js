@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Header from "./Header";
 import "./CSS/Interview.css";
 
-function Interview() {
+function Summary() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -27,4 +26,4 @@ function Interview() {
   );
 }
 
-export default Interview;
+export default Summary;
