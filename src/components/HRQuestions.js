@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import "./CSS/HRQuestions.css";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { UserAuth } from "../authContext";
+import { db } from "../firebase";
 
 function HRQuestions() {
+    const {user} = UserAuth()
+    const userId = doc(db,'users',`${user?.email}`)
     const [expandedIndex, setExpandedIndex] = useState(-1);
+    const [showYourAnswer, setShowYourAnswer] = useState(-1);
+    const [yourAnserText, setYourAnswerText] = useState('');
     const interview_questions = [
         {
             question: "1. Tell me about yourself?",
@@ -87,8 +94,78 @@ function HRQuestions() {
 
     const handleToggleExpand = (index) => {
         setExpandedIndex(index === expandedIndex ? -1 : index);
+        setShowYourAnswer(-1);
     };
-
+    const handleToggleYourAnswer = (index) =>{
+        setShowYourAnswer(index === showYourAnswer ? -1 : index);
+        setExpandedIndex(-1);
+    }
+    const handleYourAnswerChange = (event) =>{
+        setYourAnswerText(event.target.value);
+    } 
+    // const handleSubmitYourAnswer = async (event) =>{
+    //     try {
+    //         console.log('Submitted Answer : ', yourAnserText);
+    //         const userDoc = await getDoc(userId);
+    //         const userData = userDoc.data();
+    //         const existingAnswerIndex = userData.answers.findIndex(answer => answer.question === interview_questions[showYourAnswer].question);
+    //         if (existingAnswerIndex !==-1){
+    //             const updatedAnswers = [...userData.answers];
+    //             updatedAnswers.splice(existingAnswerIndex, 1);
+    //             await updateDoc(userId, {
+    //                 answers: updatedAnswers
+    //             });
+    //         }
+    //         await updateDoc(userId,{
+    //             answers: arrayUnion({
+    //                 question: interview_questions[showYourAnswer].question,
+    //                 answer: yourAnserText,
+    //             })
+    //         })
+    //         setYourAnswerText('');
+    //         setShowYourAnswer(-1);
+    //     } catch (error) {
+    //         console.error('Error submitting answer:', error);
+    //     }
+    // }
+    const handleSubmitYourAnswer = async (event) => {
+        try {
+            console.log('Submitted Answer : ', yourAnserText);
+            if (!user || !userId) {
+                console.error('User or userId is undefined');
+                return;
+            }
+            const userDoc = await getDoc(userId);
+            if (!userDoc.exists()) {
+                console.error('User document does not exist');
+                return;
+            }
+            const userData = userDoc.data();
+            if (!userData || !userData.answers) {
+                console.error('User data or answers are undefined');
+                return;
+            }
+            const existingAnswerIndex = userData.answers.findIndex(answer => answer.question === interview_questions[showYourAnswer].question);
+            if (existingAnswerIndex !== -1) {
+                const updatedAnswers = [...userData.answers];
+                updatedAnswers.splice(existingAnswerIndex, 1);
+                await updateDoc(userId, {
+                    answers: updatedAnswers
+                });
+            }
+            await updateDoc(userId, {
+                answers: arrayUnion({
+                    question: interview_questions[showYourAnswer].question,
+                    answer: yourAnserText,
+                })
+            });
+            setYourAnswerText('');
+            setShowYourAnswer(-1);
+        } catch (error) {
+            console.error('Error submitting answer:', error);
+        }
+    }
+    
     return (
         <div className="hr__questions">
           <h1>HR Insights Hub</h1>
@@ -98,6 +175,9 @@ function HRQuestions() {
                         <h3>{each.question}</h3>
                         <span onClick={() => handleToggleExpand(index)}>
                             <b>Answer</b>
+                        </span>&nbsp; &nbsp;
+                        <span onClick={() => handleToggleYourAnswer(index)}>
+                            <b>Your Answer</b>
                         </span>
                         {expandedIndex === index ? (
                             <div className="expandable">
@@ -105,6 +185,16 @@ function HRQuestions() {
                                     <p key={i}>{line}</p>
                                 ))}
                             </div>
+                        ) : null}
+                        {showYourAnswer === index ? (
+                            <div >
+                                <textarea className="yourans"
+                                placeholder="Your answer..."
+                                value={yourAnserText}
+                                onChange={handleYourAnswerChange}/><br/>
+                                <button className="subbtn" onClick={handleSubmitYourAnswer}>Submit</button>
+                            </div>
+
                         ) : null}
                     </div>
                 ))}

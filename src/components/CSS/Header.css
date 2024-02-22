@@ -3,15 +3,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px 65px;
     background-color: #333;
     color: white;
   }
 .subhead{
     display: flex;
     gap: 25px;
+    align-items: center;
+    font-weight: 500;
 }
 .tabs{
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }

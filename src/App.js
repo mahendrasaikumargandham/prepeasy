@@ -8,6 +8,8 @@ import SignIn from "./components/SignIn";
 import Header from "./components/Header";
 import Summary from "./components/Summary";
 import { AuthContextProvider } from "./authContext";
+import SavedAnswers from "./components/SavedAnswers";
+import Account from "./components/Account";
 function App() {
   return (
     <div className="App">
@@ -20,7 +22,8 @@ function App() {
           <Route path="/summary" element={<Summary/>} />
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/signin" element={<SignIn/>} />
-
+          <Route path='/savedanswers' element={<SavedAnswers/>}/>
+          <Route path='/account' element={<Account/>}/>
         </Routes>
       </AuthContextProvider>
     </div>
