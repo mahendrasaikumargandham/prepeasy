@@ -6,6 +6,8 @@
     padding: 20px 65px;
     background-color: #333;
     color: white;
+    position: fixed;
+    width: 90%;
   }
 .subhead{
     display: flex;

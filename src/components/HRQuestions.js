@@ -168,7 +168,7 @@ function HRQuestions() {
     
     return (
         <div className="hr__questions">
-          <h1>HR Insights Hub</h1>
+          <h1 >HR Insights Hub</h1>
             <div className="individual">
                 {interview_questions.map((each, index) => (
                     <div className="question_id" key={index}>

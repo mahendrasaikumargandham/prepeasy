@@ -3,7 +3,7 @@
 .signup-container {
     width: 100%;
     max-width: 400px;
-    margin: 12px auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -11,6 +11,7 @@
   }
   
   .signup-container h1 {
+    margin-top: 24%;
     text-align: center;
     margin-bottom: 20px;
   }

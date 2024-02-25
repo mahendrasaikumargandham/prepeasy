@@ -14,7 +14,7 @@ function Home() {
       <div className="home__contents">
         {user?.email?(<Link to="/interview">Interview</Link>):(<Link to="/signin">Interview</Link>)}
         {user?(<Link to="/hrquestions">HR Questions</Link>):(<Link to="/signin">HR Questions</Link>)}
-        {user?(<Link to="/summary">Summary</Link>):(<Link to="/signin">Summary</Link>)}
+        {user?(<Link to="/upload">Summary</Link>):(<Link to="/signin">Summary</Link>)}
       </div>
     </div>
   );
