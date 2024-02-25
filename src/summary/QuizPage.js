@@ -57,7 +57,7 @@ function QuizPage() {
   return (
     <div>
       {loading ? (
-        <p className='loading-message'>Loading quiz questions...</p>
+        <p>Loading quiz questions...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (

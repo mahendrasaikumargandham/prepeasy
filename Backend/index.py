@@ -102,6 +102,7 @@ def get_summary():
 
 @app.route('/quiz',methods=['GET','POST'])
 def get_quiz():
+    text = session.get('summary')
     if text:
         quiz_questions = generate_quiz(text)
         session['quiz_questions'] = quiz_questions

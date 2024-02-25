@@ -44,7 +44,7 @@ function ResumeUpload() {
       <p>Are you ready to embark on an exciting career journey? Our innovative platform offers a unique blend of technology and human interaction to help you unlock your full potential and achieve your career aspirations.</p>
         <h3>Drop your Resume</h3>
         <input type="file" className='file-input-container' onChange={handleFileChange} />
-      <button className='upload-button' onClick={handleUpload}>{load ? 'Loading...' : 'Get Summary'}</button>
+      <button className='upload-button' onClick={handleUpload}>{load ? 'Loading...' : 'Start'}</button>
       </div>
     </div>
   );
