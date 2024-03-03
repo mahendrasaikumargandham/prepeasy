@@ -1,0 +1,67 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  .container h2{
+    margin-top: 15%;
+  }
+  .container p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .container li {
+    margin-bottom: 15px;
+  }
+  
+  .container input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .container input[type="radio"]:checked + label {
+    font-weight: bold;
+  }
+  
+  .container label {
+    font-size: 16px;
+  }
+  
+  .link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  /* Add the following styles */
+  align-self: center;
+  }
+  
+  .link:hover {
+    background-color: #0056b3;
+  }
+  
+  .loading-message {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin-top: 25%;
+
+  }

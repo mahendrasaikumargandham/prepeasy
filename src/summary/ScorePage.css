@@ -1,0 +1,46 @@
+.score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .score-message {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .excellent {
+    background-color: #4caf50; /* Green */
+    color: white;
+  }
+  
+  .very-good {
+    background-color: #2196f3; /* Blue */
+    color: white;
+  }
+  
+  .good {
+    background-color: #ff9800; /* Orange */
+    color: white;
+  }
+  
+  .improve {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  .link1{
+    /* display: block; */
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 7px 14px;
+    background-color: white;
+    color: #080808;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  

@@ -11,7 +11,6 @@ function Interview() {
   };
   return (
     <div className="interview">
-      <Header />
       <div className="interview__content">
         <div className="resume__upload">
           <input type="file" onChange={handleFileChange} accept=".pdf" />
